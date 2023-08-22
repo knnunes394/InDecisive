@@ -7,6 +7,9 @@ import java.util.Scanner;
 
 public class MakeADecision {
 
+	String decided;
+	
+
 
 	public String makeADecision(){
 		MakeADecision decision = new MakeADecision();
@@ -15,11 +18,22 @@ public class MakeADecision {
 		decision.printList(foods);
 		System.out.println("What type of Cuisine are we feeling today bois");
 		Scanner sc = new Scanner(System.in);
-		String decided = sc.nextLine();
+		decided = sc.nextLine();
 		decided.toUpperCase();
 		sc.close();
 		System.out.println("You decided on " + decided);	
+		//return decided;
+		decision.createDish(decided);
 		return decided;
+		
+	}
+
+	private void createDish(String dishName){
+		if(dishName == "italian"){
+			Italian dish = new Italian();
+			dish.make();
+			dish.getIngredients();
+		}
 	}
 	
 	private ArrayList<String> readIn(String filename){
